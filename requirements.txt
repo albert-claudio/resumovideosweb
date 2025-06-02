@@ -1,0 +1,10 @@
+Flask
+Flask-CORS
+python-dotenv
+yt-dlp
+openai-whisper
+torch
+torchaudio
+requests
+reportlab
+gunicorn
