@@ -70,13 +70,16 @@ def baixar_audio_youtube_yt_dlp(url, output_dir): #
         # Caminho esperado após o download
         expected_output_filepath = os.path.join(output_dir, f"{audio_filename_base}.{audio_format}")
 
-        USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+       
         command = [
-            'yt-dlp', '--extract-audio', '-x', '--audio-format', audio_format, #
-            '--output', output_template, '--no-playlist', '--quiet', '--no-warnings', #
-            '--user-agent', USER_AGENT, # Descomente para testar
-            url
-        
+     'yt-dlp', '--extract-audio', '-x', '--audio-format', audio_format,
+     '--output', output_template, '--no-playlist', '--quiet', '--no-warnings',
+        # Experimente UMA das seguintes linhas de cada vez:
+        '--extractor-args', 'youtube:player_client=web', # Geralmente o padrão
+        # '--extractor-args', 'youtube:player_client=android',
+        #'--extractor-args', 'youtube:player_client=ios',
+        # '--extractor-args', 'youtube:player_client=tv',
+        url # A URL sempre no final
         ]
         
         print(f"BACKEND: A executar comando: {' '.join(command)}")
